@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model StudentViewModel
+
+<header>
+    <link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</header>
+<body>
+    <div>Students</div>
+    <div><button data-toggle="modal" data-target="#createModal">Add Student</button></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Full Name</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Update Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Students.Any())
+            {
+                foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@($"{student.FirstName} {student.MiddleName} {student.FamilyName}")</td>
+                        <td>@student.Course</td>
+                        <td>@student.Year</td>
+                        <td>@student.UpdateDate</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No students found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Create Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Student" asp-action="Create" method="POST">
+                        <div>
+                            <label>Student Id</label>
+                            <input type="text" name="StudentId" />
+                        </div>
+                        <div>
+                            <label>Student Id</label>
+                            <input type="text" name="FirstName" />
+                        </div>
+                        <div>
+                            <label>Student Id</label>
+                            <input type="text" name="MiddleName" />
+                        </div>
+                        <div>
+                            <label>Student Id</label>
+                            <input type="text" name="FamilyName" />
+                        </div>
+                        <div>
+                            <label>Student Id</label>
+                            <select name="Student.Course">
+                                <option value="BScIT">Bachelor of Science in Information Technology</option>
+                                <option value="BScCS">Bachelor of Science in Computer Science</option>
+                                <option value="BCom">Bachelor of Commerce</option>
+                                <option value="BBA">Bachelor of Business Administration</option>
+                                <option value="BAEng">Bachelor of Arts in English</option>
+                                <option value="BScBio">Bachelor of Science in Biology</option>
+                                <option value="BEng">Bachelor of Engineering</option>
+                                <option value="BArch">Bachelor of Architecture</option>
+                                <option value="LLB">Bachelor of Laws (LLB)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Year</label>
+                            <select name="Year">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

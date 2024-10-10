@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header>
+    <link rel="stylesheet" href="~/css/home.css" />
+</header>
+<body>
+    <div class="centered">
+        <a class="card">
+            <div class="card-info">
+                <p class="title">Users</p>
+            </div>
+        </a>
+        <a class="card" asp-controller="Student" asp-action="Index">
+            <div class="card-info">
+                <p class="title">Students</p>
+                <p> By</p>
+                <p>Julius Basas</p>
+            </div>
+        </a>
+        <a class="card">
+            <div class="card-info">
+                <p class="title">Cars</p>
+            </div>
+        </a>
+        <a class="card">
+            <div class="card-info">
+                <p class="title">Here</p>
+            </div>
+        </a>
+        <a class="card">
+            <div class="card-info">
+                <p class="title">Here</p>
+            </div>
+        </a>
+    </div>
+</body>
