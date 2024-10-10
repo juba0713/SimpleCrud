@@ -30,7 +30,7 @@ namespace SimpleCrud.WebApp.Controllers
         [HttpPost]
         public IActionResult Create(StudentModel model)
         {
-
+            //Hello
             _studentService.AddStudent(model);
 
             return RedirectToAction("Index");
