@@ -27,8 +27,41 @@ namespace SimpleCrud.Services.Services
             _mapper.Map(model, student);
             student.CreateDate = DateTime.Now;
             student.UpdateDate = DateTime.Now;
-
+ 
             _studentRepository.AddStudent(student);
+        }
+
+        public void DeleteStudent(string studentId)
+        {
+            _studentRepository.DeleteStudent(studentId);
+        }
+
+        public void EditStudent(StudentModel model)
+        {
+            var student = new Student
+            {
+                StudentId = model.StudentId,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                FamilyName = model.FamilyName,
+                Course = model.Course,
+                Year = model.Year,
+                UpdateDate = DateTime.Now
+            };
+
+            _studentRepository.EditStudent(student);
+        }
+
+        public (bool, Student?) GetStudentById(string studentId)
+        {
+            var student = _studentRepository.getStudentById(studentId);
+
+            if(student  == null)
+            {
+                return (false, student);
+            }
+
+            return (true, student);
         }
 
         public IEnumerable<StudentObj> GetStudents()

@@ -24,6 +24,50 @@ namespace SimpleCrud.Data.Repositories
             _context.SaveChanges();
         }
 
+        public void DeleteStudent(string studentId)
+        {
+            var student = _context.Students.FirstOrDefault(s => s.StudentId.Equals(studentId));
+
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+
+            _context.Students.Remove(student);
+            _context.SaveChanges();
+        }
+
+        public void EditStudent(Student user)
+        {
+            var existingStudent = _context.Students.FirstOrDefault(s => s.StudentId.Equals(user.StudentId));
+
+            if (existingStudent == null)
+            {
+                throw new Exception("Student not found");
+            }
+
+            existingStudent.FirstName = user.FirstName;
+            existingStudent.MiddleName = user.MiddleName;
+            existingStudent.FamilyName = user.FamilyName;
+            existingStudent.Course = user.Course;
+            existingStudent.Year = user.Year;
+            existingStudent.UpdateDate = user.UpdateDate;
+
+            _context.SaveChanges();
+        }
+
+        public Student getStudentById(string studentId)
+        {
+            var student = _context.Students.FirstOrDefault(s => s.StudentId.Equals(studentId));
+
+            if (student == null)
+            {
+                throw new Exception("Student not found");
+            }
+
+            return student;
+        }
+
         public IEnumerable<Student> GetStudents()
         {
             return _context.Students.ToList();

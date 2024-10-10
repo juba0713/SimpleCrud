@@ -9,7 +9,7 @@ namespace SimpleCrud.Services.ServiceModels
 {
     public class StudentModel
     {
-        [Required(ErrorMessage="Student Id is required!")]
+
         public string? StudentId { get; set; }
 
         [Required(ErrorMessage = "First Name is required!")]
