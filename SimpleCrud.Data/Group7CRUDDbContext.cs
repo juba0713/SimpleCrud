@@ -6,19 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SimpleCrud.Data
 {
-    public class Group7CRUDDbContext : DbContext
+    public class SimpleCrudDbContext : DbContext
     {
-        public Group7CRUDDbContext()
+        public SimpleCrudDbContext()
         {
         }
 
-        public Group7CRUDDbContext(DbContextOptions<Group7CRUDDbContext> options)
+        public SimpleCrudDbContext(DbContextOptions<SimpleCrudDbContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
