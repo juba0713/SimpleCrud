@@ -1,0 +1,44 @@
+﻿@model SimpleCrud.Data.Models.Car
+
+@{
+    ViewData["Title"] = "Add Car";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <form asp-action="AddCar" method="post">
+        <div class="mb-3">
+            <label asp-for="carName" class="form-label">Car Name</label>
+            <input asp-for="carName" class="form-control" />
+            <span asp-validation-for="carName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="carType" class="form-label">Car Type</label>
+            <input asp-for="carType" class="form-control" />
+            <span asp-validation-for="carType" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="carBrand" class="form-label">Car Brand</label>
+            <input asp-for="carBrand" class="form-control" />
+            <span asp-validation-for="carBrand" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="carColor" class="form-label">Car Color</label>
+            <input asp-for="carColor" class="form-control" />
+            <span asp-validation-for="carColor" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Car</button>
+        <a href="@Url.Action("Index", "Car")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
