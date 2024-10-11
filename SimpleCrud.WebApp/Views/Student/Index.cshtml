@@ -12,7 +12,7 @@
 </header>
 <body>
     <div>Students</div>
-    <div><button data-toggle="modal" data-target="#createModal">Add Student</button></div>
+    <div><button data-toggle="modal" data-target="#createModal" class="btn btn-primary">Add Student</button></div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -76,19 +76,19 @@
                             <input type="text" name="StudentId" />
                         </div>
                         <div>
-                            <label>Student Id</label>
+                            <label>First Name</label>
                             <input type="text" name="FirstName" />
                         </div>
                         <div>
-                            <label>Student Id</label>
+                            <label>Middle Name</label>
                             <input type="text" name="MiddleName" />
                         </div>
                         <div>
-                            <label>Student Id</label>
+                            <label>Family Name</label>
                             <input type="text" name="FamilyName" />
                         </div>
                         <div>
-                            <label>Student Id</label>
+                            <label>Course</label>
                             <select name="Course">
                                 <option value="BScIT">Bachelor of Science in Information Technology</option>
                                 <option value="BScCS">Bachelor of Science in Computer Science</option>
@@ -199,7 +199,6 @@
                     $('#editFamilyName').val(response.familyName);
                     $('#editCourse').val(response.course);
                     $('#editYear').val(response.year);
-                    console.log(response.course);
                 },
                 error: function () {
                     alert('Failed to fetch student data.');
