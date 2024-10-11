@@ -11,7 +11,7 @@ using SimpleCrud.Data;
 
 namespace SimpleCrud.Data.Migrations
 {
-    [DbContext(typeof(Group7CRUDDbContext))]
+    [DbContext(typeof(SimpleCrudDbContext))]
     [Migration("20241010092945_InitialStudent")]
     partial class InitialStudent
     {

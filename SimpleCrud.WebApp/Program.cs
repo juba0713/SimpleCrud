@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using SimpleCrud.Data;
 using SimpleCrud.Data.Interfaces;
 using SimpleCrud.Data.Repositories;
 using SimpleCrud.Services.Interfaces;
 using SimpleCrud.Services.Services;
+using Microsoft.EntityFrameworkCore;
+using SimpleCrud.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddControllersWithViews();
 //Connecting to the DB
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'TestAuthentication4ContextConnection' not found.");
 
-builder.Services.AddDbContext<Group7CRUDDbContext>(
+builder.Services.AddDbContext<SimpleCrudDbContext>(
     options => options.UseSqlServer(connectionString));
 
 
@@ -22,6 +23,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

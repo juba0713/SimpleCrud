@@ -11,9 +11,9 @@ namespace SimpleCrud.Data.Repositories
 {
     public class StudentRepository : IStudentRepository 
     {
-        private readonly Group7CRUDDbContext _context;
+        private readonly SimpleCrudDbContext _context;
 
-        public StudentRepository(Group7CRUDDbContext context)
+        public StudentRepository(SimpleCrudDbContext context)
         {
             _context = context;
         }
