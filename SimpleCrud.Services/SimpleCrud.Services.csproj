@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SimpleCrud.Data\SimpleCrud.Data.csproj" />
+    <ProjectReference Include="..\SimpleCrud.Resources\SimpleCrud.Resources.csproj" />
   </ItemGroup>
 
 </Project>
