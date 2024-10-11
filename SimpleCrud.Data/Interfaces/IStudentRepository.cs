@@ -11,6 +11,13 @@ namespace SimpleCrud.Data.Interfaces
     {
         IEnumerable<Student> GetStudents();
         bool StudentExists(string studentId);
+
+        Student getStudentById(string studentId);
+
         void AddStudent(Student user);
+
+        void EditStudent(Student user);
+
+        void DeleteStudent(string studentId);
     }
 }
