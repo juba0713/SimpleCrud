@@ -11,10 +11,6 @@ namespace SimpleCrud.Data
 {
     public class SimpleCrudDbContext : DbContext
     {
-        public SimpleCrudDbContext()
-        {
-        }
-
         public SimpleCrudDbContext(DbContextOptions<SimpleCrudDbContext> options)
             : base(options)
         {
@@ -23,5 +19,11 @@ namespace SimpleCrud.Data
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Motorcycle> Motorcycles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
