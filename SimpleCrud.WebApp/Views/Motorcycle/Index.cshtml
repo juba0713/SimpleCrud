@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SimpleCrud.Data.Models.Motorcycle>
+
+@{
+    ViewData["Title"] = "Motorcycle List";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>@ViewData["Title"]</h1>
+        <a href="@Url.Action("AddMotorcycle", "Motorcycle")" class="btn btn-primary">
+            Add Motorcycle
+        </a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Date Created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var motorcycle in Model)
+                {
+                            <tr>
+                                <td>@motorcycle.Brand</td>
+                                <td>@motorcycle.Model</td>
+                                <td>@motorcycle.Color</td>
+                                <td>@motorcycle.Created_at.ToShortDateString()</td>
+                                <td>
+                                    <a href="@Url.Action("UpdateMotorcycle", "Motorcycle", new { id = motorcycle.Id })" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="@Url.Action("DeleteMotorcycle", "Motorcycle", new { id = motorcycle.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this motorcycle?');">Delete</a>
+                                </td>
+                            </tr>
+                }
+            }
+            else
+            {
+                    <tr>
+                        <td colspan="5" class="text-center">No motorcycles found.</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>

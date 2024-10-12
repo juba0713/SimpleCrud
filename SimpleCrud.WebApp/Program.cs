@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Connecting to the DB
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'TestAuthentication4ContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<SimpleCrudDbContext>(
     options => options.UseSqlServer(connectionString));
@@ -27,6 +27,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
+builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
 
 var app = builder.Build();
 
