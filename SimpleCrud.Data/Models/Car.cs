@@ -11,16 +11,27 @@ namespace SimpleCrud.Data.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         public required string carName { get; set; }
+
         [Required]
         public required string carType { get; set; }
+
         [Required]
         public required string carBrand { get; set; }
+
         [Required]
         public required string carColor { get; set; }
+
         [Required]
-        public DateTime DateCreated { get; }
-        public DateTime DateTUpdated;
+        public DateTime DateCreated { get; private set; }
+
+        public DateTime DateTUpdated { get; set; }
+
+        public Car()
+        {
+            DateCreated = DateTime.Now;
+        }
     }
 }

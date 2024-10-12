@@ -12,8 +12,8 @@ using SimpleCrud.Data;
 namespace SimpleCrud.Data.Migrations
 {
     [DbContext(typeof(SimpleCrudDbContext))]
-    [Migration("20241011115028_capoyCars")]
-    partial class capoyCars
+    [Migration("20241012041823_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,12 @@ namespace SimpleCrud.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTUpdated")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("carBrand")
                         .IsRequired()
